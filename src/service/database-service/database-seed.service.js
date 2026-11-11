@@ -1,0 +1,183 @@
+// src/service/database-service/database-seed.service.js
+
+export const LEVEL_100_PHRASES = [
+  // --- A1 (20 frases: Present Simple/Continuous, SVO, sin conectores ni tielpos pasados/futuros) ---
+  { text: 'I drink hot coffee in the morning.', level: 'A1' },
+  { text: 'She eats fresh apples every afternoon.', level: 'A1' },
+  { text: 'They live in a small quiet house.', level: 'A1' },
+  { text: 'He reads a good book right now.', level: 'A1' },
+  { text: 'We walk to the park together today.', level: 'A1' },
+  { text: 'The students study English at home.', level: 'A1' },
+  { text: 'My friend works in a busy office.', level: 'A1' },
+  { text: 'The sun shines bright in the sky.', level: 'A1' },
+  { text: 'You drive a nice red car.', level: 'A1' },
+  { text: 'The teacher opens the classroom door.', level: 'A1' },
+  { text: 'Children play with colorful plastic toys.', level: 'A1' },
+  { text: 'I wash my hands before eating lunch.', level: 'A1' },
+  { text: 'She speaks English with her family.', level: 'A1' },
+  { text: 'The cat sleeps on the warm sofa.', level: 'A1' },
+  { text: 'We listen to soft pop music.', level: 'A1' },
+  { text: 'He buys fresh bread every morning.', level: 'A1' },
+  { text: 'I clean my bedroom every Saturday.', level: 'A1' },
+  { text: 'They watch an interesting movie right now.', level: 'A1' },
+  { text: 'She drinks cold water after running.', level: 'A1' },
+  { text: 'The dog runs fast in the yard.', level: 'A1' },
+
+  // --- A2 (20 frases: Past Simple, going to, o conectores porque/so/but/when) ---
+  { text: 'I bought a new phone yesterday because my old one broke.', level: 'A2' },
+  { text: 'She is going to visit her grandparents next weekend.', level: 'A2' },
+  { text: 'We wanted to go outside, but it started raining heavily.', level: 'A2' },
+  { text: 'He cooked dinner when his family arrived at the house.', level: 'A2' },
+  { text: 'They visited a beautiful museum in London last summer.', level: 'A2' },
+  { text: 'I studied hard for the test, so I got a great grade.', level: 'A2' },
+  { text: 'She stayed home yesterday because she felt very tired.', level: 'A2' },
+  { text: 'We are going to travel to Spain during the summer vacation.', level: 'A2' },
+  { text: 'He missed the bus this morning, so he walked to work.', level: 'A2' },
+  { text: 'I met my old friend when I went to the supermarket.', level: 'A2' },
+  { text: 'They did not answer the phone because they were sleeping.', level: 'A2' },
+  { text: 'She bought some shoes yesterday, but they were too small.', level: 'A2' },
+  { text: 'He is going to buy a new laptop for his college classes.', level: 'A2' },
+  { text: 'We enjoyed the concert last night because the band was great.', level: 'A2' },
+  { text: 'I took a warm shower when I finished my morning exercise.', level: 'A2' },
+  { text: 'She woke up early today, so she made breakfast for everyone.', level: 'A2' },
+  { text: 'They are going to build a new library near the park.', level: 'A2' },
+  { text: 'He left his umbrella at home, so he got completely wet.', level: 'A2' },
+  { text: 'We spent the whole afternoon cleaning the house yesterday.', level: 'A2' },
+  { text: 'I called my brother when I arrived at the train station.', level: 'A2' },
+
+  // --- B1 (20 frases: Present Perfect, First Conditional, Relative Clauses, contracciones) ---
+  { text: "I've lived in this city for over five years now.", level: 'B1' },
+  { text: "If you practice every day, you'll improve your English quickly.", level: 'B1' },
+  { text: 'The engineer who designed this building lives in London.', level: 'B1' },
+  { text: "She hasn't finished her project yet, but she'll send it soon.", level: 'B1' },
+  { text: "If it rains tomorrow, we'll stay inside and watch movies.", level: 'B1' },
+  { text: 'The book that I borrowed from the library is really fascinating.', level: 'B1' },
+  { text: "He's worked at this company since he graduated from college.", level: 'B1' },
+  { text: "If you don't hurry up, we'll miss the morning train.", level: 'B1' },
+  { text: 'The woman who leads the marketing team speaks three languages fluently.', level: 'B1' },
+  { text: "We've already booked our flight tickets for the upcoming trip.", level: 'B1' },
+  { text: "If she passes the exam, her parents will buy her a car.", level: 'B1' },
+  { text: 'The restaurant that we visited last night had amazing food.', level: 'B1' },
+  { text: "I haven't heard from my manager since last Monday afternoon.", level: 'B1' },
+  { text: "If you leave the keys on the table, I'll pick them up later.", level: 'B1' },
+  { text: 'The doctor who treated my brother was very polite and helpful.', level: 'B1' },
+  { text: "They've lived in three different countries over the past decade.", level: 'B1' },
+  { text: "If we save enough money this year, we'll buy a house.", level: 'B1' },
+  { text: 'The application that you installed yesterday works very smoothly.', level: 'B1' },
+  { text: "She's already learned how to drive automatic cars safely.", level: 'B1' },
+  { text: "If he calls you back, tell him that I've already left.", level: 'B1' },
+
+  // --- B2 (20 frases: Second/Third Conditional, Past Modals 'should have', conectores 'although'/'despite') ---
+  { text: 'Although the weather was terrible, they decided to continue their hike.', level: 'B2' },
+  { text: "If I had known about the traffic jam, I would've taken another route.", level: 'B2' },
+  { text: "You should've informed the manager before submitting the final report.", level: 'B2' },
+  { text: 'Despite the high prices, many people still bought the new product.', level: 'B2' },
+  { text: 'If I won the lottery today, I would travel all around the world.', level: 'B2' },
+  { text: 'He could have passed the exam easily if he had studied a bit more.', level: 'B2' },
+  { text: 'Although she was extremely tired, she stayed up late to finish her work.', level: 'B2' },
+  { text: "If we had arrived ten minutes earlier, we would've caught the train.", level: 'B2' },
+  { text: "They might've forgotten about the meeting because nobody showed up today.", level: 'B2' },
+  { text: 'Despite working long hours, he always makes time for his kids.', level: 'B2' },
+  { text: 'If I were in your position, I would discuss the issue directly with them.', level: 'B2' },
+  { text: "She should've checked the flight status before leaving for the airport.", level: 'B2' },
+  { text: 'Although the team faced several obstacles, they successfully completed the task.', level: 'B2' },
+  { text: "If he had followed the instructions properly, the device wouldn't have broken.", level: 'B2' },
+  { text: "We would've helped you move houses if you had asked us earlier.", level: 'B2' },
+  { text: 'Despite their differences of opinion, they managed to reach a fair agreement.', level: 'B2' },
+  { text: 'If I had more free time, I would learn how to play the piano.', level: 'B2' },
+  { text: 'He could have called us earlier to let us know he was running late.', level: 'B2' },
+  { text: 'Although the apartment is relatively small, it has a wonderful city view.', level: 'B2' },
+  { text: "She would've accepted the job offer if the salary had been higher.", level: 'B2' },
+
+  // --- C1 (20 frases: Participial Clauses, Inversión gramatical 'Rarely have I...', Cleft Sentences) ---
+  { text: 'Having finished all her assignments, she finally settled down to relax.', level: 'C1' },
+  { text: 'Rarely have I encountered such an exceptionally dedicated team of researchers.', level: 'C1' },
+  { text: 'It was only after checking the logs that we realized what went wrong.', level: 'C1' },
+  { text: 'Walking through the crowded airport terminal, he bumped into his former colleague.', level: 'C1' },
+  { text: 'Not only did they meet all deadline targets, but they also exceeded revenue expectations.', level: 'C1' },
+  { text: 'What impressed the committee most was her ability to handle high-pressure situations.', level: 'C1' },
+  { text: 'Having lived in Tokyo for a decade, he speaks Japanese with complete natural fluency.', level: 'C1' },
+  { text: 'Scarcely had the meeting begun when the emergency fire alarm went off.', level: 'C1' },
+  { text: 'It was her groundbreaking research paper that turned around the entire investigation.', level: 'C1' },
+  { text: 'Looking back on the whole project, we realized we should have backed up the data.', level: 'C1' },
+  { text: 'Never before have consumers demanded such high levels of digital security.', level: 'C1' },
+  { text: 'What matters most during crisis management is remaining calm under pressure.', level: 'C1' },
+  { text: 'Having analyzed the financial figures thoroughly, the board approved the expansion plan.', level: 'C1' },
+  { text: 'Seldom do we witness such a remarkable blend of talent and sheer determination.', level: 'C1' },
+  { text: 'It was the lead engineer who came up with the innovative solution to the system crash.', level: 'C1' },
+  { text: 'Having been warned about the upcoming blizzard, local residents stocked up on supplies.', level: 'C1' },
+  { text: 'Little did they know that their startup idea would revolutionize the tech industry.', level: 'C1' },
+  { text: 'What we urgently need to address is the growing backlog of customer requests.', level: 'C1' },
+  { text: 'Having spent months negotiating the terms, both parties signed the agreement.', level: 'C1' },
+  { text: 'Only by working collaboratively can we overcome these unprecedented market challenges.', level: 'C1' }
+];
+
+export const LEVEL_50_WORDS = [
+  // --- A1 ---
+  { text: 'Schedule', level: 'A1' },
+  { text: 'Daily routine', level: 'A1' },
+  { text: 'Neighborhood', level: 'A1' },
+  { text: 'Grocery store', level: 'A1' },
+  { text: 'Weather forecast', level: 'A1' },
+  { text: 'Family gathering', level: 'A1' },
+  { text: 'Workspace', level: 'A1' },
+  { text: 'Healthy habits', level: 'A1' },
+  { text: 'Public transport', level: 'A1' },
+  { text: 'Weekend plans', level: 'A1' },
+
+  // --- A2 ---
+  { text: 'Flight ticket', level: 'A2' },
+  { text: 'Customer service', level: 'A2' },
+  { text: 'Shopping mall', level: 'A2' },
+  { text: 'Traffic jam', level: 'A2' },
+  { text: 'Job interview', level: 'A2' },
+  { text: 'Train station', level: 'A2' },
+  { text: 'Boarding pass', level: 'A2' },
+  { text: 'Fitness center', level: 'A2' },
+  { text: 'Budget plan', level: 'A2' },
+  { text: 'Dinner reservation', level: 'A2' },
+
+  // --- B1 ---
+  { text: 'Career opportunity', level: 'B1' },
+  { text: 'Financial advice', level: 'B1' },
+  { text: 'Environmentally friendly', level: 'B1' },
+  { text: 'Work-life balance', level: 'B1' },
+  { text: 'Problem-solving skills', level: 'B1' },
+  { text: 'Team management', level: 'B1' },
+  { text: 'Smooth transition', level: 'B1' },
+  { text: 'Safety guidelines', level: 'B1' },
+  { text: 'Mutual respect', level: 'B1' },
+  { text: 'Relative clause', level: 'B1' },
+
+  // --- B2 ---
+  { text: 'High-pressure situation', level: 'B2' },
+  { text: 'Cut down on', level: 'B2' },
+  { text: 'Come up with', level: 'B2' },
+  { text: 'Keep up with', level: 'B2' },
+  { text: 'Run out of', level: 'B2' },
+  { text: 'Break down', level: 'B2' },
+  { text: 'Take into account', level: 'B2' },
+  { text: 'Look forward to', level: 'B2' },
+  { text: 'In spite of', level: 'B2' },
+  { text: 'On behalf of', level: 'B2' },
+
+  // --- C1 ---
+  { text: 'Unprecedented challenge', level: 'C1' },
+  { text: 'Groundbreaking research', level: 'C1' },
+  { text: 'Comprehensive analysis', level: 'C1' },
+  { text: 'Paradigm shift', level: 'C1' },
+  { text: 'Mitigate risks', level: 'C1' },
+  { text: 'Drive innovation', level: 'C1' },
+  { text: 'Fulfill requirements', level: 'C1' }
+];
+
+export const SLA_DEMO_GROUPS = [
+  {
+    name: '[SLA] 1. Escucha Adaptativa (Cloze i+1)',
+    phrases: [
+      { text: 'If you practice every day, you will improve your fluency.', level: 'B1', exercise_type: 'cloze', exercise_metadata: { target_word: 'fluency', hint: 'Capacidad de hablar con soltura' } },
+      { text: 'We should take into account all unexpected delays.', level: 'B2', exercise_type: 'cloze', exercise_metadata: { target_word: 'take into account', hint: 'Tener en cuenta' } },
+      { text: 'Despite working long hours, he managed to reach his target.', level: 'B2', exercise_type: 'cloze', exercise_metadata: { target_word: 'managed to reach', hint: 'Logró alcanzar' } }
+    ]
+  }
+];

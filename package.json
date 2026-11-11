@@ -1,0 +1,90 @@
+{
+  "name": "language-local-app",
+  "version": "1.0.0",
+  "description": "Versión mínima funcional de la app local",
+  "productName": "Language Local App",
+  "build": {
+    "appId": "com.languagelocalapp.prototype",
+    "productName": "Language Local App",
+    "asar": true,
+    "asarUnpack": [
+      "node_modules/better-sqlite3/**",
+      "node_modules/node-llama-cpp/**"
+    ],
+    "files": [
+      "dist/**/*",
+      "src/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "models/gemma-3-1B-it-QAT-Q4_0.gguf",
+        "to": "models/gemma-3-1B-it-QAT-Q4_0.gguf"
+      }
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "${productName}-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    }
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "build": "vite build",
+    "dev": "npm run build && electron .",
+    "dev:web": "vite",
+    "test": "node --test",
+    "test:e2e": "npm run build && playwright test",
+    "test:e2e:headed": "npm run build && playwright test --headed",
+    "package:win": "npm run build && electron-builder --win nsis --x64"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "fzstd": "^0.1.1",
+    "gtts": "^0.2.1",
+    "lit": "^3.3.3",
+    "msedge-tts": "^2.1.0",
+    "node-llama-cpp": "^3.22.2",
+    "yauzl": "^3.4.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.64.1",
+    "electron": "^44.9.1",
+    "electron-builder": "26.18.0",
+    "playwright": "^1.64.1",
+    "vite": "^8.3.4"
+  },
+  "overrides": {
+    "gtts": {
+      "request": "npm:@cypress/request@^3.0.10",
+      "yargs": {
+        "yargs-parser": "5.0.1"
+      }
+    },
+    "node-llama-cpp": {
+      "simple-git": "^4.0.2"
+    },
+    "minimatch": "^11.0.1",
+    "qs": "^6.17.1",
+    "uuid": "^11.1.1"
+  }
+}

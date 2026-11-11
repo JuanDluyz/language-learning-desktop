@@ -1,0 +1,33 @@
+# Dependencias de Node
+node_modules/
+.npm/
+
+# Salidas de compilación y empaquetado
+dist/
+release/
+
+# Telemetría y reportes de pruebas
+test-results/
+playwright-report/
+.tsupgrader/
+
+# Archivos multimedia temporales
+public/audio/
+
+# Base de datos SQLite local (se genera automáticamente en el primer inicio)
+database/*.sqlite
+database/*.sqlite-shm
+database/*.sqlite-wal
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Modelos locales de lenguaje (importables desde la interfaz)
+models/*.gguf
+
+# Archivos del sistema operativo y editores
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/

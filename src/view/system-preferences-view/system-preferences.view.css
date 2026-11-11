@@ -1,0 +1,1022 @@
+/* Backdrop blur & Dark Overlay con animación suave */
+.settings-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  opacity: 0;
+  animation: modalFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transition: opacity 0.18s ease-out;
+}
+
+.settings-modal-overlay.closing {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.settings-modal-overlay.closing .settings-modal-container {
+  transform: scale(0.96);
+  opacity: 0;
+  transition: transform 0.18s ease-out, opacity 0.18s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ModalContainer (1100x680px intactos) */
+.settings-modal-container {
+  width: 1100px;
+  max-width: 95vw;
+  height: 680px;
+  max-height: 92vh;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  color: var(--text-color);
+  transform: scale(0.96);
+  animation: modalScaleUp 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes modalScaleUp {
+  from {
+    transform: scale(0.96);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* ModalTitleBar (38px de Alto con Título Centrado) */
+.ModalTitleBar {
+  height: 38px;
+  min-height: 38px;
+  background-color: var(--card-bg);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.top_title_lbl {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.close_btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 5px;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.16s, color 0.16s;
+}
+
+.close_btn:hover {
+  background: var(--card-soft-bg);
+  color: var(--text-color);
+}
+
+/* Estructura del Cuerpo (Sidebar 190px + ContentStack) */
+.settings-modal-body {
+  flex: 1;
+  display: flex;
+  height: calc(100% - 38px);
+  overflow: hidden;
+}
+
+/* SettingsSidebar (190px de Ancho Fijo - 20% reducidos) */
+.SettingsSidebar {
+  width: 190px;
+  min-width: 190px;
+  background-color: var(--card-soft-bg);
+  border-right: 1px solid var(--border-color);
+  padding: 20px 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar-header-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  padding-left: 8px;
+}
+
+.SidebarNavBtn {
+  height: 32px;
+  min-height: 32px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  padding: 0 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.16s, color 0.16s, border-color 0.16s;
+  display: flex;
+  align-items: center;
+}
+
+.SidebarNavBtn:hover {
+  background: var(--card-bg);
+  color: var(--text-color);
+}
+
+.SidebarNavBtn.active {
+  background-color: var(--card-bg);
+  border-color: var(--border-color);
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+/* ContentStack (Área Principal de Ajustes) */
+.ContentStack {
+  flex: 1;
+  height: 100%;
+  overflow-y: auto;
+  padding: 24px 32px;
+  box-sizing: border-box;
+  background-color: var(--bg-color);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+}
+
+.tab-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+/* Page Header (20% reducidos) */
+.page-header {
+  margin-bottom: 18px;
+}
+
+.page-title {
+  margin: 0 0 4px 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-color);
+  letter-spacing: -0.4px;
+}
+
+.page-subtitle {
+  margin: 0;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.settings-cards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Design de Tarjetas de Configuración (SettingCard 20% reducidas) */
+.SettingCard {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 13px 18px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  transition: border-color 0.16s;
+}
+
+.SettingCard:hover {
+  border-color: var(--text-muted);
+}
+
+.setting-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.setting-title {
+  margin: 0;
+  font-size: 12.8px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.setting-desc {
+  margin: 0;
+  font-size: 11.2px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.setting-control {
+  display: flex;
+  align-items: center;
+}
+
+.setting-control.vertical-control {
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+/* Custom Dropdown / Select (20% reducidos) */
+.custom-select {
+  padding: 6px 28px 6px 10px;
+  background-color: var(--card-soft-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  min-width: 190px;
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%23888888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  transition: border-color 0.16s, background-color 0.16s;
+}
+
+.custom-select:hover,
+.custom-select:focus {
+  border-color: var(--primary-color);
+  background-color: var(--card-soft-bg);
+}
+
+/* ToggleSwitch (38x21px con Knob 15px - 20% reducidos) */
+.ToggleSwitch {
+  width: 38px;
+  height: 21px;
+  border-radius: 11px;
+  background-color: var(--border-color);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.18s ease;
+  display: flex;
+  align-items: center;
+}
+
+.ToggleSwitch.on {
+  background-color: var(--primary-color);
+}
+
+.ToggleSwitch .knob {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: var(--text-color);
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  transition: transform 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ToggleSwitch.on .knob {
+  transform: translateX(17px);
+}
+
+/* Tab Footer & Botón de Guardar Ajustes con Feedback Interactivo */
+.tab-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--border-color);
+}
+
+.save-status-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.save-status-hint.has-changes {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.save-status-hint.success {
+  color: var(--success-color);
+  font-weight: 600;
+}
+
+.save-status-hint .hint-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  display: inline-block;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.save-status-hint.has-changes .hint-dot {
+  background: var(--primary-color);
+  transform: scale(1.15);
+}
+
+.save-status-hint.success .hint-dot {
+  background: var(--success-color);
+  transform: scale(1.15);
+}
+
+.btn-save-settings {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--card-soft-bg);
+  color: var(--text-soft);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 9px 22px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  min-width: 154px;
+}
+
+.btn-save-settings:hover:not(:disabled) {
+  border-color: var(--text-muted);
+  color: var(--text-color);
+  transform: translateY(-1px);
+}
+
+.btn-save-settings:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+/* Estado: Cambios pendientes (Listo para guardar) */
+.btn-save-settings.has-changes {
+  background: var(--primary-color);
+  color: var(--primary-btn-text);
+  border-color: var(--primary-color);
+  animation: btnSaveGlow 2.4s infinite ease-in-out;
+}
+
+.btn-save-settings.has-changes:hover {
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+/* Estado: Guardando */
+.btn-save-settings.saving {
+  background: var(--primary-color);
+  color: var(--primary-btn-text);
+  border-color: var(--primary-color);
+  pointer-events: none;
+  opacity: 0.85;
+}
+
+/* Estado: Éxito */
+.btn-save-settings.success {
+  background: var(--success-color);
+  color: var(--primary-btn-text);
+  border-color: var(--success-color);
+  pointer-events: none;
+  animation: btnSuccessPop 0.35s ease-out;
+}
+
+.btn-save-spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--primary-btn-text);
+  border-radius: 50%;
+  animation: btnSpin 0.75s linear infinite;
+  display: inline-block;
+}
+
+.btn-save-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary-purple {
+  background: var(--primary-color);
+  color: var(--primary-btn-text);
+  border: 1px solid var(--primary-color);
+  border-radius: 6px;
+  padding: 9px 22px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.16s, background-color 0.16s;
+}
+
+.btn-primary-purple:hover {
+  transform: translateY(-1px);
+  background: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+.btn-primary-purple:active {
+  transform: translateY(0);
+}
+
+@keyframes btnSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes btnSaveGlow {
+  0% {
+    outline: 2px solid transparent;
+    outline-offset: 0;
+  }
+  50% {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
+  }
+  100% {
+    outline: 2px solid transparent;
+    outline-offset: 0;
+  }
+}
+
+@keyframes btnSuccessPop {
+  0% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Engine Status Banner */
+.engine-status-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.engine-status-banner.active {
+  background-color: var(--success-bg);
+  border: 1px solid var(--success-color);
+  color: var(--success-color);
+}
+
+.engine-status-banner.inactive {
+  background-color: var(--warning-bg);
+  border: 1px solid var(--warning-color);
+  color: var(--warning-color);
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.btn-import-model {
+  padding: 7px 12px;
+  background-color: var(--card-soft-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.16s, border-color 0.16s;
+}
+
+.btn-import-model:hover:not(:disabled) {
+  background-color: var(--border-color);
+}
+
+.lbl_model_error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background-color: var(--danger-bg);
+  border: 1px solid var(--danger-color);
+  color: var(--danger-color);
+  border-radius: 6px;
+  font-size: 0.78rem;
+  margin-top: 10px;
+}
+
+/* Prompts Page */
+.prompts-page {
+  gap: 10px;
+}
+
+.category-pills {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.CategoryPillBtn {
+  padding: 5px 11px;
+  border-radius: 16px;
+  background-color: var(--card-soft-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.16s ease;
+}
+
+.CategoryPillBtn:hover {
+  color: var(--text-color);
+  border-color: var(--primary-color);
+}
+
+.CategoryPillBtn.active {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--primary-btn-text);
+  font-weight: 600;
+}
+
+.prompt-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.prompt-select-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.PromptStatusBadge {
+  padding: 3px 8px;
+  border-radius: 5px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.PromptStatusBadge.default {
+  background-color: var(--success-bg);
+  color: var(--success-color);
+  border: 1px solid var(--success-color);
+}
+
+.PromptStatusBadge.custom {
+  background-color: var(--primary-btn-bg);
+  color: var(--accent-color);
+  border: 1px solid var(--primary-btn-border);
+}
+
+.PromptStatusBadge.unsaved {
+  background-color: var(--warning-bg);
+  color: var(--warning-color);
+  border: 1px solid var(--warning-color);
+}
+
+.prompt_stats_lbl {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.prompt-meta-description {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.PromptCodeEditor {
+  width: 100%;
+  height: 280px;
+  box-sizing: border-box;
+  padding: 12px;
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-size: 12.5px;
+  line-height: 1.5;
+  tab-size: 4;
+  resize: none;
+  outline: none;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-color) transparent;
+  transition: border-color 0.16s;
+}
+
+.PromptCodeEditor:focus {
+  border-color: var(--primary-color);
+}
+
+.prompt-actions-bar {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.btn-save-prompt {
+  padding: 8px 16px;
+  background-color: var(--primary-color);
+  color: var(--primary-btn-text);
+  border: none;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.16s;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+}
+
+.btn-save-prompt:hover {
+  background-color: var(--primary-hover);
+}
+
+.btn-reset-prompt {
+  padding: 8px 16px;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  border-radius: 6px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: background 0.16s, color 0.16s;
+}
+
+.btn-reset-prompt:hover:not(:disabled) {
+  background: var(--card-soft-bg);
+  color: var(--text-color);
+}
+
+.btn-reset-prompt:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Toast de Retroalimentación Temporal */
+.prompt_feedback_lbl {
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  padding: 8px 14px;
+  background-color: var(--success-bg);
+  color: var(--success-color);
+  border: 1px solid var(--success-color);
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  animation: toastFadeIn 0.18s ease;
+  z-index: 1000;
+}
+
+@keyframes toastFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* DropZone para arrastrar modelos .gguf */
+.model-dropzone {
+  border: 2px dashed var(--border-color);
+  border-radius: 10px;
+  padding: 24px;
+  text-align: center;
+  background-color: var(--card-soft-bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: border-color 0.2s, background-color 0.2s;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.model-dropzone.drag-over {
+  border-color: var(--primary-color);
+  background-color: var(--card-bg);
+}
+
+.dropzone-icon {
+  font-size: 2.2rem;
+  color: var(--primary-color);
+}
+
+.dropzone-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.dropzone-text strong {
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+/* Botón Añadir Modelo */
+.btn-add-model {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--primary-color);
+  color: var(--primary-btn-text);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.16s, transform 0.1s;
+  box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+}
+
+.btn-add-model:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+/* Tarjeta de Estado del Modelo Cargado */
+.active-model-card {
+  background-color: var(--card-soft-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.active-model-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.active-model-header-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.active-model-title {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.active-badge {
+  background-color: var(--success-bg);
+  color: var(--success-color);
+  border: 1px solid var(--success-color);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.inactive-badge {
+  background-color: var(--danger-bg);
+  color: var(--danger-color);
+  border: 1px solid var(--danger-color);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.active-model-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-color);
+  font-family: 'Consolas', 'Monaco', monospace;
+}
+
+.btn-unload-model {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-soft);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.btn-unload-model:hover {
+  background: var(--danger-bg);
+  border-color: var(--danger-color);
+  color: var(--danger-color);
+}
+
+/* Modal Añadir Modelo */
+.add-model-modal-card {
+  width: 520px;
+  max-width: 90vw;
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalScaleUp 0.18s ease-out forwards;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--card-soft-bg);
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.close-modal-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.close-modal-btn:hover:not(:disabled) {
+  color: var(--text-color);
+  background: var(--card-soft-bg);
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-actions-center {
+  display: flex;
+  justify-content: center;
+  margin-top: 14px;
+}
+
+.btn-import-model-modal {
+  background-color: var(--primary-color);
+  color: var(--primary-btn-text);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.16s;
+}
+
+.btn-import-model-modal:hover {
+  background-color: var(--primary-hover);
+}
+
+/* Progreso de Copiado con Porcentaje */
+.import-progress-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 16px 8px;
+  gap: 12px;
+}
+
+/* Spinner Anular Minimalista y Profesional */
+.minimal-spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid rgba(168, 85, 247, 0.2);
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: spinRing 0.8s linear infinite;
+}
+
+.minimal-spinner-small {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(168, 85, 247, 0.2);
+  border-top-color: var(--primary-color);
+  border-radius: 50%;
+  animation: spinRing 0.8s linear infinite;
+}
+
+@keyframes spinRing {
+  to { transform: rotate(360deg); }
+}
+
+.progress-title {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text-color);
+  word-break: break-all;
+}
+
+.progress-bar-track {
+  width: 100%;
+  height: 12px;
+  background-color: var(--card-soft-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--primary-btn-bg);
+  border-radius: 6px;
+  transition: width 0.2s ease-out;
+}
+
+.progress-percent-label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.progress-subtext {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.4;
+}

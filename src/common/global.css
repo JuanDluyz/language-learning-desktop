@@ -1,0 +1,323 @@
+
+/* src/common/global.css - Unified Master Design Tokens (Neutral Charcoal Calibrated) */
+:root,
+:root[data-theme="dark"],
+body.dark-mode, 
+body.dark-theme {
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  --bg-color: #141414;       /* Dark Studio Nivel 1 — Estructura */
+  --card-bg: #161616;     /* Dark Studio Nivel 2 — Contenido */
+  --card-soft-bg: #1e1e1e;/* Dark Studio Nivel 3 — Elementos Interactivos */
+  --border-color: #242424; /* Divisores 1px neutros */
+  --text-color: #f0f0f0;   /* Blanco Suave Neutro */
+  --text-soft: #e4e4e7;    /* Plata / Zinc 200 */
+  --text-muted: #888888;   /* Gris neutro atenuado */
+  
+  /* Motor IA - Acento Intencional (10% de la UI) */
+  --primary-color: #8b5cf6;/* Violeta / Lila Acento */
+  --primary-hover: #7c3aed;/* Violeta Hover */
+  --accent-color: #a78bfa; /* Lila Acento Suave */
+  --primary-btn-bg: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  --primary-btn-border: #8b5cf6;
+  --primary-btn-hover-bg: linear-gradient(135deg, #7c3aed, #6d28d9);
+  --primary-btn-text: #ffffff;
+
+  /* Tokens Semánticos SRS (Deep Matte Tints) */
+  --success-color: #6ee7b7;/* Emerald 300 mate */
+  --success-bg: rgba(16, 185, 129, 0.12);
+  --warning-color: #fde68a;/* Amber 300 mate */
+  --warning-bg: rgba(245, 158, 11, 0.12);
+  --danger-color: #fca5a5; /* Coral Red 300 mate */
+  --danger-bg: rgba(239, 68, 68, 0.12);
+}
+
+/* Eliminación total de box-shadow en Modo Oscuro (Diseño Plano Mate High-End) */
+:root[data-theme="dark"] *,
+:root:not([data-theme="light"]) *,
+body.dark-mode *,
+body.dark-theme * {
+  box-shadow: none !important;
+}
+
+:root[data-theme="light"],
+body:not(.dark-mode) {
+  --bg-color: #f8fafc;       /* Slate 50 */
+  --card-bg: #ffffff;     /* White */
+  --card-soft-bg: #f1f5f9;/* Slate 100 */
+  --border-color: #e2e8f0; /* Slate 200 */
+  --text-color: #0f172a;   /* Slate 900 */
+  --text-soft: #334155;    /* Slate 700 */
+  --text-muted: #64748b;   /* Slate 500 */
+  
+  --primary-color: #4f46e5;/* Indigo 600 */
+  --primary-hover: #4338ca;/* Indigo 700 */
+  --accent-color: #4f46e5; /* Indigo 600 */
+  --primary-btn-bg: linear-gradient(135deg, #4f46e5, #4338ca);
+  --primary-btn-border: #4f46e5;
+  --primary-btn-hover-bg: linear-gradient(135deg, #4338ca, #3730a3);
+  --primary-btn-text: #ffffff;
+
+  /* Tokens Semánticos SRS */
+  --success-color: #059669;/* Emerald 600 */
+  --success-bg: rgba(16, 185, 129, 0.12);
+  --warning-color: #d97706;/* Amber 600 */
+  --warning-bg: rgba(245, 158, 11, 0.12);
+  --danger-color: #dc2626; /* Coral Red 600 */
+  --danger-bg: rgba(239, 68, 68, 0.12);
+}
+
+/* Transición suave al cambiar de tema en contenedores estructurales */
+body, 
+div, 
+section, 
+header, 
+footer, 
+aside, 
+main, 
+button, 
+input, 
+textarea, 
+.card, 
+.modal-content, 
+.settings-content, 
+.ai-setup-card {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+/* Base reset & typography */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Root component container */
+app-view {
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+/* Skeleton Shimmer Loader (IA Local Processing) */
+.skeleton-loader {
+  width: 100%;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(
+    90deg,
+    var(--card-soft-bg, #283548) 25%,
+    rgba(99, 102, 241, 0.18) 50%,
+    var(--card-soft-bg, #283548) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Cursor de Inserción LLM Streaming */
+.streaming-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background-color: var(--primary-color, #6366f1);
+  margin-left: 3px;
+  vertical-align: middle;
+  animation: blink-cursor 0.8s infinite;
+}
+
+.vocab-picker-button,
+.vocab-filter-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 32px;
+  padding: 5px 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--card-bg);
+  color: var(--text-soft);
+  font-size: 0.76rem;
+  font-weight: 550;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+
+.vocab-picker-button:hover,
+.vocab-filter-button:hover {
+  background: var(--card-soft-bg);
+  border-color: var(--text-muted);
+}
+
+.vocab-picker-button {
+  color: var(--success-color);
+  border-color: color-mix(in srgb, var(--success-color) 38%, var(--border-color));
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.vocab-picker-button svg {
+  width: 15px;
+  height: 15px;
+}
+
+.vocab-filter-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.vocab-filter-bar {
+  padding: 9px 16px;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--card-soft-bg);
+}
+
+.vocab-filter-label {
+  color: var(--text-muted);
+  font-size: 0.74rem;
+  font-weight: 600;
+}
+
+.vocab-filter-controls {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 3px;
+  border: 1px solid var(--border-color);
+  border-radius: 7px;
+  background: var(--card-bg);
+}
+
+.vocab-filter-button {
+  min-height: 27px;
+  padding: 4px 8px;
+  border-color: transparent;
+  background: transparent;
+  font-size: 0.72rem;
+}
+
+.vocab-filter-button[aria-pressed="true"] {
+  background: var(--card-soft-bg);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.vocab-add-filtered {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid color-mix(in srgb, var(--danger-color) 35%, var(--border-color));
+  background: var(--danger-bg);
+  color: var(--danger-color);
+}
+
+.vocab-add-filtered svg {
+  width: 13px;
+  height: 13px;
+}
+
+.vocab-word-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 9px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--card-soft-bg);
+  color: var(--text-color);
+  font-size: 0.77rem;
+  line-height: 1.25;
+  cursor: pointer;
+  transition: background-color 0.16s ease, border-color 0.16s ease;
+}
+
+.vocab-word-chip:hover {
+  border-color: var(--text-muted);
+}
+
+.vocab-word-chip.selected {
+  border-color: var(--success-color);
+  background: var(--success-bg);
+}
+
+.vocab-selection-mark {
+  display: inline-block;
+  position: relative;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 14px;
+  border: 1px solid var(--text-muted);
+  border-radius: 4px;
+}
+
+.vocab-word-chip.selected .vocab-selection-mark {
+  border-color: var(--success-color);
+  background: var(--success-color);
+}
+
+.vocab-word-chip.selected .vocab-selection-mark::after {
+  position: absolute;
+  top: 1px;
+  left: 4px;
+  width: 4px;
+  height: 8px;
+  border: solid var(--card-bg);
+  border-width: 0 1.5px 1.5px 0;
+  content: '';
+  transform: rotate(45deg);
+}
+
+.vocab-difficulty-mark {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  flex: 0 0 8px;
+  border-radius: 50%;
+  background: var(--text-muted);
+}
+
+.vocab-difficulty-mark.hard {
+  background: var(--danger-color);
+}
+
+.vocab-difficulty-mark.medium {
+  background: var(--warning-color);
+}
+
+.vocab-difficulty-mark.easy {
+  background: var(--success-color);
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
