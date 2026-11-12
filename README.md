@@ -8,7 +8,10 @@ Sistema interactivo de adquisición de segundas lenguas (SLA) para escritorio ba
 
 La versión ejecutable compilada para entornos Windows x64 se encuentra disponible directamente en la sección oficial de entregas del repositorio:
 
-* **Descargar paquete ejecutable (v1.0.0):** [Language Learning Desktop Releases v1.0.0](https://github.com/JuanDluyz/language-learning-desktop/releases/tag/v1.0.0)
+* **Descargar instalador ejecutable (v1.0.0):** [Language_Learning_Desktop_Setup_v1.0.0.exe](https://github.com/JuanDluyz/language-learning-desktop/releases/download/v1.0.0/Language_Learning_Desktop_Setup_v1.0.0.exe)
+* **Página de la Entrega:** [Releases v1.0.0](https://github.com/JuanDluyz/language-learning-desktop/releases/tag/v1.0.0)
+
+El instalador autónomo (NSIS) autodescomprime el entorno Electron, preinstala el modelo GGUF cuantizado (Gemma 3 1B QAT) y configura los accesos directos de escritorio sin requerir configuración manual previa.
 
 El paquete pre-empaquetado incluye todas las dependencias nativas de C++ (`node-llama-cpp`, `better-sqlite3`) y el entorno de ejecución Electron preconfigurado.
 
