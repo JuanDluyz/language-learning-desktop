@@ -1,7 +1,7 @@
 {
   "name": "language-local-app",
   "version": "1.0.0",
-  "description": "Versión mínima funcional de la app local",
+  "description": "Versi\u00f3n m\u00ednima funcional de la app local",
   "productName": "Language Local App",
   "build": {
     "appId": "com.languagelocalapp.prototype",
@@ -41,7 +41,8 @@
       "perMachine": false,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true
-    }
+    },
+    "npmRebuild": false
   },
   "main": "src/index.js",
   "scripts": {
